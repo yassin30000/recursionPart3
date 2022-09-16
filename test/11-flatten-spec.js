@@ -1,4 +1,8 @@
 const assert = require("assert");
+const chai = require("chai");
+const expect = chai.expect;
+const spies = require("chai-spies");
+chai.use(spies);
 
 const flatten = require('../problems/11-flatten');
 
@@ -17,4 +21,9 @@ describe("flatten()", function () {
     );
     assert.deepEqual(flatten([[[1, 2]], [[3, 4]]]), [1, 2, 3, 4]);
   });
+  it("should not call the Array.prototype.flat() method", function () {
+    const flatSpy = chai.spy.on(Array.prototype, "flat");
+    assert.deepEqual(flatten([[[[]]]]), []);
+    expect(flatSpy).to.have.not.been.called();
+  })
 });

@@ -3,6 +3,8 @@ Write a recursive function called `flatten` that takes a single array with
 any number of nested arrays and returns and array with all the nested
 contents on one level.
 
+Do not use the built in Array.flat.
+
 Examples:
 
 flatten([]); // []
