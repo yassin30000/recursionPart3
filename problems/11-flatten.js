@@ -13,9 +13,20 @@ flatten([1, [2, [3]]]); // [1, 2, 3]
 ***********************************************************************/
 
 function flatten(arr) {
-  // Your code here
+    // check if last el is an array, if it isnt, take that element and push to result
+    let result = [];
+
+    if (!arr.length) return result;
+    if (!Array.isArray(arr[0])) {
+        result.push(arr.shift());
+        return flatten(arr);
+    }
 }
-  
+
+console.log(flatten([])); // []
+console.log(flatten([1, 2])); // [1, 2]
+console.log(flatten([1, [2, [3]]])); // [1, 2, 3]
+
 /**************DO NOT MODIFY ANYTHING UNDER THIS LINE*****************/
 module.exports = flatten;
   
