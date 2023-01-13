@@ -13,20 +13,23 @@ flatten([1, [2, [3]]]); // [1, 2, 3]
 ***********************************************************************/
 
 function flatten(arr) {
-    // check if last el is an array, if it isnt, take that element and push to result
+    //check if last el is an array, if it isnt, take that element and push to result
     let result = [];
 
-    if (!arr.length) return result;
-    if (!Array.isArray(arr[0])) {
-        result.push(arr.shift());
-        return flatten(arr);
+    for (let i = 0; i < arr.length; i++) {
+        if (!Array.isArray(arr[i])) {
+            result.push(arr[i]);
+        } else {
+            result.push(...flatten(arr[i]));
+        }
     }
-}
+    return result;
 
-console.log(flatten([])); // []
-console.log(flatten([1, 2])); // [1, 2]
-console.log(flatten([1, [2, [3]]])); // [1, 2, 3]
+    // return arr.map( (el) => {
+    //     if (!Array.isArray(el)) return el;
+    //     if (Array.isArray(el)) return flatten(...el);
+    // });
+}
 
 /**************DO NOT MODIFY ANYTHING UNDER THIS LINE*****************/
 module.exports = flatten;
-  

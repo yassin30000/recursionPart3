@@ -12,8 +12,13 @@ isSorted([5, 4, 3, 2, 1]); // false
 
 
 function isSorted(arr) {
-    if (arr[1] == arr[0] + 1) return true;
+    //base case
+    if (arr.length < 2) return true;
+    // edge case
+    if (arr[0] > arr[1]) return false;
+    //recursive step
     return isSorted(arr.slice(1));
+    // since were slicing, need to check arr length in base case
 }
 
 
